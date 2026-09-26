@@ -48,7 +48,9 @@ export function minusRelation(
   B: number,
   R: number,
 ): CharRelation {
-  return { c: headDown - B * flowDown, b: B + R * flowDown };
+  // 摩阻阻抗必须取流量模：若用带符号的 R*flowDown，流量反向时摩阻变号
+  // 成为负阻尼，振荡将不衰减（见 test/frictionDecay.test.ts）
+  return { c: headDown - B * flowDown, b: B + R * Math.abs(flowDown) };
 }
 
 /**
