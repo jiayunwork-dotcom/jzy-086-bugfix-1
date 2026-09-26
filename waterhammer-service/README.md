@@ -151,7 +151,7 @@ curl -s -X POST http://localhost:3000/simulate \
 比值 1.02 —— 带摩阻时略大于 1 是物理结果：到达阀门的 C+ 特征线把
 上游邻点的稳态水头（含末段摩阻落差）带进边界解。无摩阻时比值精确到 1e-6。
 
-## 自动化测试（vitest，25 例）
+## 自动化测试（vitest，29 例）
 
 ```bash
 npm test
@@ -164,6 +164,7 @@ npm test
 | `test/period.test.ts` | 第二峰值观测往返周期 ≈ 4L/a（容差 2%） |
 | `test/slowClosure.test.ts` | 缓关（Tc≫2L/a）峰值 < 瞬时关闭峰值；分段折线与线性关闭一致 |
 | `test/massBalance.test.ts` | 流量协调：`d/dt∫H dx = (a²/gA)(Q_in−Q_out)` 全程积分平衡（容差 5%） |
+| `test/frictionDecay.test.ts` | 长时程摩阻衰减：逐周期单调衰减、第十周期抬升 ≤ 首周期 80%、谷值不深于无摩阻（容差 1e-9 m）、f=0 等幅防回归 |
 | `test/http.test.ts` | HTTP 端到端：正常响应、三类结构化错误 |
 
 > 流量协调说明：弹性管的严格积分平衡是「管内蓄水（平均水头）变化

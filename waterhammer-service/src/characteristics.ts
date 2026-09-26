@@ -48,7 +48,9 @@ export function minusRelation(
   B: number,
   R: number,
 ): CharRelation {
-  return { c: headDown - B * flowDown, b: B + R * flowDown };
+  // 摩阻系数取旧时层流量的模（与 C+ 对称）：若误用带符号的 flowDown，
+  // 反流（Q<0）半周期内 Bm < B，摩阻变成能源，振荡将不衰减甚至谷值加深。
+  return { c: headDown - B * flowDown, b: B + R * Math.abs(flowDown) };
 }
 
 /**
