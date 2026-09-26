@@ -1,0 +1,8 @@
+{
+  "pipe": { "length": 1000, "diameter": 0.5, "waveSpeed": 1000, "frictionFactor": 0.02 },
+  "reservoirHead": 50,
+  "initialVelocity": 1,
+  "closure": { "type": "linear", "duration": 0 },
+  "discretization": { "segments": 20 },
+  "duration": 12
+}

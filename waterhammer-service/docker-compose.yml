@@ -1,0 +1,11 @@
+# 一键启动：docker compose up --build
+# 服务监听 3000 端口，POST /simulate 收 JSON、回 JSON。
+services:
+  waterhammer:
+    build: .
+    image: waterhammer-service:latest
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+    restart: unless-stopped
